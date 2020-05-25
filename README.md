@@ -1,6 +1,7 @@
 # Predicting Car Prices using Machine Learning
 
 ![Challenger](./figures/challenger.jpg)
+Image from [Fineartamerica](https://fineartamerica.com/featured/5-dodge-challenger-srt-hellcat-draw-carstoon-concept.html)
 
 Within this repo, I created a regression model that predicts car prices.
 I found that by doing so, I would be able to aid people like me (a year ago) who needed to sell/buy a car and had no idea what a fair price is.
