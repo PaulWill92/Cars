@@ -9,14 +9,13 @@ Use this [app](In progress) to predict price
 
 1. [Presentation Slides](https://drive.google.com/file/d/1mDAKD81HligeDWsKDlGVd0qk2NiRACtr/view?usp=sharing)
 2. [Data Gathering](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/01-Data_Gathering.ipynb)
-3. [Data frame](https://github.com/PaulWill92/cars/blob/master/Cleaned-Data/cleaned_cars.csv)
-4. [Data Cleaning](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/02-Data_Cleaning.ipynb)
-5. [Data Exploration](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/03-Data_Exploration.ipynb)
-6. [Data Modeling](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/04-Data_Modeling.ipynb)
+3. [Data Cleaning](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/02-Data_Cleaning.ipynb)
+4. [Data Exploration](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/03-Data_Exploration.ipynb)
+5. [Data Modeling](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/04-Data_Modeling.ipynb)
 
 My Socials:
 
-- [My email](paulaleksis@gmail.com)
+- Email: paulaleksis@gmail.com
 - [My Linked](WWW.LINKEDIN.COM/IN/PAUL-ALEKSIS-406776199)
 - [My Twitter](in progress)
 
@@ -41,7 +40,7 @@ After extracting my data, I began cleaning the data set to provide the correct f
 
 After data cleaning, I explored my data set looking for outliers and checking the linear correlations between my target variable and predictors. I was able to feature engineer new features. The process is shown in my [Data Exploration](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/03-Data_Exploration.ipynb) notebook.
 
-### Corelation of new create features
+### Corelation of new created features
 ![Heatmap](./figures/heatmap_new_feat.png)
 
 ### Correlation of all features
