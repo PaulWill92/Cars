@@ -35,22 +35,35 @@ Knowing the above parameters, I know that In order to solve my problem, I am abl
 
 ### Methodology
 
-To get started, I created a web crawling script [here](https://github.com/PaulWill92/predict-car-prices/blob/master/Jupyter-Notebooks/01-Data_Gathering.ipynb) to extract features of certain up to date cars from the [website](https://www.autovillage.co.uk/used-car/filter/bodystyle/saloon). I was able to store these values in a list, form a data frame out of the list values, and save that data frame as a [csv file](https://github.com/PaulWill92/predict-car-prices/blob/master/Cleaned-Data/cleaned_cars.csv).
+To get started, I created a web crawling script found in my [Data Gathering](https://github.com/PaulWill92/predict-car-prices/blob/master/Jupyter-Notebooks/01-Data_Gathering.ipynb) notebook, to extract features of certain up to date cars from [Auto Village](https://www.autovillage.co.uk/used-car/filter/bodystyle/saloon). I was able to store these values in a list, form a data frame out of the list values, and save that data frame as a [csv file](https://github.com/PaulWill92/predict-car-prices/blob/master/Cleaned-Data/cleaned_cars.csv).
 
-After extracting my data, I began cleaning the data set to provide the correct format for modeling in this [Jupyter Notebook](https://github.com/PaulWill92/predict-car-prices/blob/master/Jupyter-Notebooks/02-data_cleaning.ipynb). I utilized many string manipulation techniques to split my features into seperate columns. By the end of the cleaning, I was left with 1 target variable and 8 predictors.
+After extracting my data, I began cleaning the data set to provide the correct format for modeling in this [Data Cleaning](https://github.com/PaulWill92/predict-car-prices/blob/master/Jupyter-Notebooks/02-data_cleaning.ipynb) notebook. I utilized many string manipulation techniques to split my features into seperate columns. By the end of the cleaning, I was left with 1 target variable and 8 predictors.
 
-After data cleaning, I explored my data set looking for linear correlations between my target variable and predictors. I also checked for multicollinearity between my predictors.
+After data cleaning, I explored my data set looking for outliers and checking the linear correlations between my target variable and predictors. I was able to feature engineer new features. The process is shown in my [Data Exploration](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/03-Data_Exploration.ipynb) notebook.
 
+### Corelation of new create features
+![Heatmap](./figures/heatmap_new_feat.png)
+
+### Correlation of all features
 ![Heatmap](./figures/heatmap.png)
 
-I created a pairplot to check for outliers within my data set.
 
-![Pairplot](./figures/feature_pairplot.png)
 
-After exploration, I proceeded to model you can find my modeling in this [Jupyter Notebook](https://github.com/PaulWill92/predict-car-prices/blob/master/Jupyter-Notebooks/04-Data_Modeling.ipynb). Since my data set contained multiple categorical values, I had to encode them to be able to use within my baseline model. Once encoded, I split up my data set into 4 sets; train, validation, and test. From these sets, I ran my baseline which scored negatively with all of my features included. After this model, I removed my model variable as it had way too much variance and was throwing off my models predictability. With this change, I was able to get my model to a reasonable 0.65 R-squared.
+After exploration, I proceeded to model you can find my modeling in my [Data Modeling](https://github.com/PaulWill92/predict-car-prices/blob/master/Jupyter-Notebooks/04-Data_Modeling.ipynb) notebook. Since my data set contained multiple categorical values, I had to encode them to be able to use within my baseline model. Once encoded, I split up my data set into 4 sets; train, validation, and test. From these sets, I ran my baseline which scored negatively with all of my features included. 
 
-I tried out other models such as ridge, lasso, and polynomial to the 2nd degree regression. These models did not score as high.
+![Baseline1](./figures/baseline1_score.png)
 
-As of now, My best model is my Linear regression with a .65 R-squared. I will do some feature engineering to improve this model and try a random forrest regressor.
+After this model, I removed my model variable as it had way too much variance and was throwing off my models predictability and got a higher score on my linear regression model.
+
+![Baseline2](./figures/baseline2_score.png)
+
+I tried out other models such as Decision tree, K-nearest neighbours, and Random Forrest regressors. These models scored:
+
+![Model Scores](./figures/model_scores.png)
+
+As of now, my best model is my Random Forrest regressor with a .88 R-squared. Here is a visual of 30 of it's predicted outputs.
+
+![Forrest Predictions](./forrest_predicted_output.png)
+
 
 To Improve my model, I would extract more features from other auto sale websites and add it to my model because for the most part, my model is underfit.
