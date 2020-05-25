@@ -63,7 +63,7 @@ I tried out other models such as Decision tree, K-nearest neighbours, and Random
 
 As of now, my best model is my Random Forrest regressor with a .88 R-squared. Here is a visual of 30 of it's predicted outputs.
 
-![Forrest Predictions](./forrest_predicted_output.png)
+![Forrest Predictions](./figures/forrest_predicted_output.png)
 
 
 To Improve my model, I would extract more features from other auto sale websites and add it to my model because for the most part, my model is underfit.
