@@ -16,8 +16,8 @@ Use this [app](In progress) to predict price
 My Socials:
 
 - Email: paulaleksis@gmail.com
-- [My Linked](WWW.LINKEDIN.COM/IN/PAUL-ALEKSIS-406776199)
-- [My Twitter](in progress)
+- Linkedin: [Paul-Aleksis](WWW.LINKEDIN.COM/IN/PAUL-ALEKSIS-406776199)
+- Twitter: [My Twitter](in progress)
 
 ### Executive Summary
 
@@ -65,4 +65,10 @@ As of now, my best model is my Random Forrest regressor with a .88 R-squared. He
 ![Forrest Predictions](./figures/forrest_predicted_output.png)
 
 
-To Improve my model, I would extract more features from other auto sale websites and add it to my model because for the most part, my model is underfit.
+To Improve my model, I would extract more features from other auto sale websites and add it to my model. Since my data set was webscraped, the cars acquired were completely random. It turns out the majority of my cars were mercedes-benz. I would also increase my sample size of cars providing a wide range of brands this would likely help with some of the instability, since mercedes-benz has such a wide range of cars that vary a lot in price based on their model. 
+
+## Sources:
+
+[AutoVillage](https://www.autovillage.co.uk/used-car)
+[Scikit learn](https://scikit-learn.org/stable/user_guide.html)
+[Numble fins](https://www.nimblefins.co.uk/average-annual-mileage-cars-england-down-%E2%80%93-are-we-really-driving-less)
