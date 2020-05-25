@@ -69,6 +69,6 @@ To Improve my model, I would extract more features from other auto sale websites
 
 ## Sources:
 
-[AutoVillage](https://www.autovillage.co.uk/used-car)
-[Scikit learn](https://scikit-learn.org/stable/user_guide.html)
+[AutoVillage](https://www.autovillage.co.uk/used-car) <br>
+[Scikit learn](https://scikit-learn.org/stable/user_guide.html) <br>
 [Numble fins](https://www.nimblefins.co.uk/average-annual-mileage-cars-england-down-%E2%80%93-are-we-really-driving-less)
