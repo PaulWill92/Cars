@@ -67,6 +67,13 @@ Through the use of GridSearchCV hyper parameter optimization, I was able to decr
 
 ![Forrest Predictions](./figures/forrest_predicted_output.png)
 
+My optimized KNN regressor scored .7 R2 after gridsearch hyper parameter optimization which was better than the original:
+
+![KNN scores](./figures/KNN_gs_scores.png)
+
+Here is a visualization of the KNN regressors predictions on 10 random cars that it has never seen from the test data set:
+
+![KNN Prediction](./figures/KNN_predicted_output.png)
 
 To Improve my model, I would extract more features from other auto sale websites and add it to my model. Since my data set was webscraped, the cars acquired were completely random. It turns out the majority of my cars were mercedes-benz. I would also increase my sample size of cars providing a wide range of brands this would likely help with some of the instability, since mercedes-benz has such a wide range of cars that vary a lot in price based on their model. 
 
