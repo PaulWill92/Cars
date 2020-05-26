@@ -5,7 +5,7 @@
 
 
 
-def FitViewScores(models, X_train, y_train, X_val, y_val):
+def fit_view_scores(models, X_train, y_train, X_val, y_val):
     """
     This function takes a list of regressors, train and test data sets and fits the
     regressor to the train data set and makes predictions on the validation/test set.
@@ -235,7 +235,7 @@ def view_scores(models, X_train, y_train, X_val, y_val):
 
 
 
-def gridOptimizer(opt_model):
+def grid_optimizer(opt_model):
     """
     This function takes a fitted gridsearch model and displays it's results as a seaborn heatmap
     
