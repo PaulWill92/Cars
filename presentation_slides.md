@@ -1,1 +1,1 @@
-link to presentation slides can be found [here](https://drive.google.com/file/d/1mDAKD81HligeDWsKDlGVd0qk2NiRACtr/view)
+link to presentation slides can be found [here](https://drive.google.com/file/d/1mDAKD81HligeDWsKDlGVd0qk2NiRACtr/view?usp=sharing)

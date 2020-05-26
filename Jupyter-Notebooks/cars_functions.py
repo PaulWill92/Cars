@@ -72,7 +72,7 @@ def FitViewScores(models, X_train, y_train, X_val, y_val):
 
 
 
-def PredictionPlotter(model_name, original_df, X_val, y_val):
+def prediction_plotter(model_name, original_df, X_val, y_val):
     """
     This function takes an instatiated regression model, and test/validation sets.
     It makes a prediction on 10 random rows of the test/validation set and then
@@ -137,7 +137,7 @@ def PredictionPlotter(model_name, original_df, X_val, y_val):
 
 
 
-def HeatMap(df, fig_size):
+def heat_map(df, fig_size):
     
     """
     
@@ -170,7 +170,7 @@ def HeatMap(df, fig_size):
 
 
 
-def ViewScores(models, X_train, y_train, X_val, y_val):
+def view_scores(models, X_train, y_train, X_val, y_val):
     """
     This function takes a list of regressors makes predictions on the validation/test set.
     It then makes a data frame of the results and assigns a heatmap of highest scores(in dark red),
@@ -235,7 +235,7 @@ def ViewScores(models, X_train, y_train, X_val, y_val):
 
 
 
-def GridOptimizer(opt_model):
+def gridOptimizer(opt_model):
     """
     This function takes a fitted gridsearch model and displays it's results as a seaborn heatmap
     
