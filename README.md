@@ -63,7 +63,7 @@ I tried out other models such as Decision tree, K-nearest neighbours, and Random
 
 ![Model Scores](./figures/model_scores.png)
 
-As of now, my best model is my Random Forrest regressor with a .88 R-squared. Here is a visual of 30 of it's predicted outputs.
+Through the use of GridSearchCV hyper parameter optimization, I was able to decrease some of my random forrest models error. As of now, my best model is my Random Forrest regressor with a .88 R-squared. Here is a visual of 30 of it's predicted outputs.
 
 ![Forrest Predictions](./figures/forrest_predicted_output.png)
 

@@ -1,9 +1,3 @@
-
-
-
-
-
-
 #========================================================================================================#
 # Regressor fit and scorer
 #========================================================================================================#
@@ -70,6 +64,7 @@ def FitViewScores(models, X_train, y_train, X_val, y_val):
 
 
 
+
 #========================================================================================================#
 # Plotting predictions
 #========================================================================================================#
@@ -77,11 +72,14 @@ def FitViewScores(models, X_train, y_train, X_val, y_val):
 
 
 
-def PredictionPlotter(model_name, X_val, y_val):
+def PredictionPlotter(model_name, original_df, X_val, y_val):
     """
     This function takes an instatiated regression model, and test/validation sets.
     It makes a prediction on 10 random rows of the test/validation set and then
     it graphs them with the actual results in a scatter plot.
+    
+    It is customized to take the argument of the original dataframe I made and show
+    the 10 cars it predicted in a table as well ass the visualization of the predictions.
     
     """
     
@@ -89,6 +87,8 @@ def PredictionPlotter(model_name, X_val, y_val):
     import numpy as np
     import matplotlib.pyplot as plt
     import random
+    import pandas as pd
+    import seaborn as sns
     
     
     # Create random generator 
@@ -98,6 +98,20 @@ def PredictionPlotter(model_name, X_val, y_val):
    
     # make model predict on val/test
     model_name_pred = model_name.predict(X_val[choosen:choosen+10].round(-3))
+    
+    cars = pd.merge(y_val.iloc[:][choosen:choosen+10], X_val.iloc[:,:4][choosen:choosen+10], 
+                    left_index=True, right_index=True)
+    fixed = pd.merge(cars, original_df[['brand','model', 'transmission', 'body_style']], 
+                     left_index=True, right_index=True)
+
+    # stylize the df
+    cm = sns.light_palette("blue", as_cmap=True)
+    
+    # add commas to numbers for readability purposes
+    fixed['price(£)'] = fixed.apply(lambda x: "{:,}".format(x['price(£)']), axis=1)
+    fixed['mileage(mi)']= fixed.apply(lambda x: "{:,}".format(x['mileage(mi)']), axis=1)
+    fixed['engine_size(cc)']= fixed.apply(lambda x: "{:,}".format(x['engine_size(cc)']), axis=1)
+    
     
     # plot results
     fig, ax = plt.subplots(figsize=(8,5))
@@ -109,13 +123,17 @@ def PredictionPlotter(model_name, X_val, y_val):
     ax.set_xticks([])
     plt.savefig('../figures/prediction_plotter/{}_predicted_output.png'.format(model_name.__class__.__name__))
     
-    return plt.show()
+    
+    
+    return fixed
+
 
 
 
 #========================================================================================================#
 # Correlation heatmap for features
 #========================================================================================================#
+
 
 
 
@@ -141,6 +159,7 @@ def HeatMap(df, fig_size):
     plt.savefig('../figures/heatmap.png')
     
     return plt.show()
+
 
 
 
@@ -206,3 +225,59 @@ def ViewScores(models, X_train, y_train, X_val, y_val):
                             ascending=False).style.background_gradient(cmap=cm)
     return results
 
+
+
+
+#========================================================================================================#
+# Grid Search visualizer
+#========================================================================================================#
+
+
+
+
+def GridOptimizer(opt_model):
+    """
+    This function takes a fitted gridsearch model and displays it's results as a seaborn heatmap
+    
+    """
+    import pandas as pd
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    import numpy as np
+    
+    opt = pd.DataFrame(opt_model.cv_results_)
+    cols = [
+        col
+        for col in opt.columns
+        if ("mean" in col or "std" in col) and "time" not in col
+    ]
+    params = pd.DataFrame(list(opt.params))
+    opt = pd.concat([params, opt[cols]], axis=1, sort=False)
+
+    plt.figure(figsize=[15, 4])
+    plt.subplot(121)
+    sns.heatmap(
+        pd.pivot_table(
+            opt,
+            index="max_depth",
+            columns="min_samples_leaf",
+            values="mean_train_score",
+        )
+        * 100
+    )
+    plt.title("R2 - Training")
+    plt.subplot(122)
+    sns.heatmap(
+        pd.pivot_table(
+            opt, index="max_depth", columns="min_samples_leaf", values="mean_test_score"
+        )
+        * 100
+    )
+    plt.title("R2 - Validation")
+    
+    
+    
+    
+#========================================================================================================#
+# 
+#========================================================================================================#
