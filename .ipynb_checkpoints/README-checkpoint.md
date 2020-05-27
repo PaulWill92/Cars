@@ -76,6 +76,8 @@ Here is a visualization of the KNN regressors predictions on 10 random cars that
 
 ![KNN test redictions](./figures/KNN_test_predictions.png)
 
+The final model I selected was the KNN model as it tends to predict well on average brand cars.
+
 To Improve my model, I would extract more features from other auto sale websites and add it to my model. Since my data set was webscraped, the cars acquired were completely random. It turns out the majority of my cars were mercedes-benz. I would also increase my sample size of cars providing a wide range of brands this would likely help with some of the instability, since mercedes-benz has such a wide range of cars that vary a lot in price based on their model. 
 
 ## Sources:

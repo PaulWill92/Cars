@@ -91,7 +91,7 @@ def prediction_plotter(model_name, original_df, X_val, y_val):
     import seaborn as sns
     
     
-    # Create random generator 
+    # Create random sample generator 
     n = random.sample(range(1,1000),1)
     choosen = n[0]
     
@@ -99,33 +99,50 @@ def prediction_plotter(model_name, original_df, X_val, y_val):
     # make model predict on val/test
     model_name_pred = model_name.predict(X_val[choosen:choosen+10].round(-3))
     
+    # create the predicted price column
+    predicted_price = []
+    for item in model_name_pred:
+        if model_name_pred.shape == (10,1):
+            predicted_price.append(item[0].round(2))
+        else: predicted_price.append(item.round(2))
+     
+    # Merge the dataframes so table can show brand and model instead of dummy variables
     cars = pd.merge(y_val.iloc[:][choosen:choosen+10], X_val.iloc[:,:4][choosen:choosen+10], 
                     left_index=True, right_index=True)
     fixed = pd.merge(cars, original_df[['brand','model', 'transmission', 'body_style']], 
                      left_index=True, right_index=True)
+    fixed['Predicted Price(£)'] = predicted_price
+    
+    
 
-    # stylize the df
-    cm = sns.light_palette("blue", as_cmap=True)
+    # Order I want the table to be displayed in
+    order = ["price(£)", "Predicted Price(£)", "mileage(mi)", "door_count", "engine_size(cc)", "year", "brand", "model","transmission", "body_style"]
+    
     
     # add commas to numbers for readability purposes
     fixed['price(£)'] = fixed.apply(lambda x: "{:,}".format(x['price(£)']), axis=1)
     fixed['mileage(mi)']= fixed.apply(lambda x: "{:,}".format(x['mileage(mi)']), axis=1)
     fixed['engine_size(cc)']= fixed.apply(lambda x: "{:,}".format(x['engine_size(cc)']), axis=1)
-    
+    fixed['Predicted Price(£)']= fixed.apply(lambda x: "{:,}".format(x['Predicted Price(£)']), axis=1)
+
+
+
     
     # plot results
     fig, ax = plt.subplots(figsize=(8,5))
     ax.scatter(np.arange(10), model_name_pred, label='predicted')
     ax.scatter(np.arange(10), y_val[choosen:choosen+10], label='actual')
     ax.legend()
-    ax.set_title('{} Validation Actual vs Predicted for 10 rows'.format(model_name.__class__.__name__))
+    ax.set_title('{} Validation Actual vs Predicted for 10 cars'.format(model_name.__class__.__name__))
     ax.set_ylabel('Price (£)')
     ax.set_xticks([])
+    
+    # Save the plot into my figures folder
     plt.savefig('../figures/prediction_plotter/{}_predicted_output.png'.format(model_name.__class__.__name__))
     
     
     
-    return fixed
+    return fixed[order].reset_index(drop=True)
 
 
 
@@ -181,8 +198,7 @@ def view_scores(models, X_train, y_train, X_val, y_val):
     import pandas as pd
     import sklearn.metrics as sm
     
-    # results containers
-    
+    # table features
     model_name = []
     train_r2 = []
     val_r2 = []
@@ -196,7 +212,7 @@ def view_scores(models, X_train, y_train, X_val, y_val):
         y_pred = reg.predict(X_train)
         val_pred = reg.predict(X_val)
         
-        
+        # use class object name for method
         model_name.append(reg.__class__.__name__)
         
         
