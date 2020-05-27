@@ -74,7 +74,7 @@ My optimized KNN regressor scored .7 R2 after gridsearch hyper parameter optimiz
 
 Here is a visualization of the KNN regressors predictions on 10 random cars that it has never seen from the test data set:
 
-![KNN test redictions](./figures/KNN_test_predictions.png)
+![KNN test predictions](./figures/final_model_prediction.png)
 
 The final model I selected was the KNN model as it tends to predict well on average brand cars.
 
