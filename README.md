@@ -70,14 +70,14 @@ Through the use of GridSearchCV hyper parameter optimization, I was able to decr
 
 My optimized KNN regressor scored .7 R2 after gridsearch hyper parameter optimization which was better than the original:
 
-![KNN scores](./figures/KNN_gs_scores.png)
+![KNN scores](./figures/winner_results.png)
 
 
 ### Winning model selection
 
 Here is a visualization of the KNN regressors predictions on 10 random cars that it has never seen from the test data set:
 
-![KNN test predictions](./figures/big_test_predictions.png)
+![KNN test predictions](./figures/winner_predictions.png)
 
 
 The final model I selected was the KNN Regressor model. 
