@@ -72,11 +72,18 @@ My optimized KNN regressor scored .7 R2 after gridsearch hyper parameter optimiz
 
 ![KNN scores](./figures/KNN_gs_scores.png)
 
+
+### Winning model selection
+
 Here is a visualization of the KNN regressors predictions on 10 random cars that it has never seen from the test data set:
 
-![KNN test predictions](./figures/final_model_prediction.png)
+![KNN test predictions](./figures/big_test_predictions.png)
 
-The final model I selected was the KNN model as it tends to predict well on average brand cars.
+
+The final model I selected was the KNN Regressor model. 
+
+Based on predictions on average cars as a whole being good, I decided to choose the KNN Regressor as my final model. This model seems to adapt best based on the features it was trained on. When I ran multiple randomized predictions, I noticed that it did not get thrown off by certain sports car luxury model outliers as much as the other models. My data set is mostly comprised of mercedes benz cars that vary heavily in price based on model. Since model was not a feauture used in training, my other regressors struggled with this and often over priced certain cars with similar physical features to luxury model cars. For example, an A class mercedes can cost within the 10-15k range, whereas a C class can be 20k+. This variance makes my other models predict way too high on non luxury model cars and way to low on certain luxury model cars. K neighbors looks at the mean of the nearest cars and says it must belong to a certain group based on it's features as a whole causing it to fall closer within range of these highly varied cars.
+
 
 To Improve my model, I would extract more features from other auto sale websites and add it to my model. Since my data set was webscraped, the cars acquired were completely random. It turns out the majority of my cars were mercedes-benz. I would also increase my sample size of cars providing a wide range of brands this would likely help with some of the instability, since mercedes-benz has such a wide range of cars that vary a lot in price based on their model. 
 

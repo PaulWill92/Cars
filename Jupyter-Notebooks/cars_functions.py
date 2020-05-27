@@ -27,6 +27,8 @@ def fit_view_scores(models, X_train, y_train, X_val, y_val):
     val_mse = []
     train_mae = []
     val_mae = []
+    train_MedAE = []
+    val_MedAE =[]
     
     for reg in models:
         reg.fit(X_train, y_train)
@@ -46,19 +48,25 @@ def fit_view_scores(models, X_train, y_train, X_val, y_val):
         
         train_mae.append(round(sm.mean_absolute_error(y_train, y_pred),2))
         val_mae.append(round(sm.mean_absolute_error(y_val, val_pred),2))
+        
+        train_MedAE.append(round(sm.median_absolute_error(y_train, y_pred),2))
+        val_MedAE.append(round(sm.median_absolute_error(y_val, val_pred),2))
+        
         #build df
         data={ 
                'Method': model_name,
                'Train R2': train_r2, 
-               'Validation R2': val_r2,
-               'Train MSE': train_mse,
-               'Validation MSE': val_mse,
-               'Train MAE': train_mae,
-               'Validation MAE': val_mae}
+               'Test R2': val_r2,
+               'Train Mean Squared Error': train_mse,
+               'Test Mean Squared Error': val_mse,
+               'Train Mean Absolute Error': train_mae,
+               'Test Mean Absolute Error': val_mae,
+               'Train Median Absolute Error': train_MedAE,
+               'Test Median Absolute Error': val_MedAE}
     
         # stylize
         cm = sns.light_palette("violet", as_cmap=True)
-        results = pd.DataFrame(data).sort_values('Validation R2',
+        results = pd.DataFrame(data).sort_values('Test R2',
                             ascending=False).style.background_gradient(cmap=cm)
     return results
 
@@ -114,18 +122,17 @@ def prediction_plotter(model_name, original_df, X_val, y_val):
     fixed['Predicted Price(£)'] = predicted_price
     
     
-
-    # Order I want the table to be displayed in
-    order = ["price(£)", "Predicted Price(£)", "mileage(mi)", "door_count", "engine_size(cc)", "year", "brand", "model","transmission", "body_style"]
-    
     
     # add commas to numbers for readability purposes
     fixed['price(£)'] = fixed.apply(lambda x: "{:,}".format(x['price(£)']), axis=1)
     fixed['mileage(mi)']= fixed.apply(lambda x: "{:,}".format(x['mileage(mi)']), axis=1)
     fixed['engine_size(cc)']= fixed.apply(lambda x: "{:,}".format(x['engine_size(cc)']), axis=1)
     fixed['Predicted Price(£)']= fixed.apply(lambda x: "{:,}".format(x['Predicted Price(£)']), axis=1)
+    
+    fixed.rename(columns={'price(£)': 'Actual Price(£)'}, inplace=True)
 
-
+    # Order I want the table to be displayed in
+    order = ["Actual Price(£)", "Predicted Price(£)", "mileage(mi)", "door_count", "engine_size(cc)", "year", "brand", "model","transmission", "body_style"]
 
     
     # plot results
@@ -133,7 +140,7 @@ def prediction_plotter(model_name, original_df, X_val, y_val):
     ax.scatter(np.arange(10), model_name_pred, label='predicted')
     ax.scatter(np.arange(10), y_val[choosen:choosen+10], label='actual')
     ax.legend()
-    ax.set_title('{} Validation Actual vs Predicted for 10 cars'.format(model_name.__class__.__name__))
+    ax.set_title('{} Test Actual vs Predicted for 10 cars'.format(model_name.__class__.__name__))
     ax.set_ylabel('Price (£)')
     ax.set_xticks([])
     
@@ -206,6 +213,8 @@ def view_scores(models, X_train, y_train, X_val, y_val):
     val_mse = []
     train_mae = []
     val_mae = []
+    train_MedAE = []
+    val_MedAE =[]
     
     for reg in models:
         #predictions
@@ -224,20 +233,25 @@ def view_scores(models, X_train, y_train, X_val, y_val):
         
         train_mae.append(round(sm.mean_absolute_error(y_train, y_pred),2))
         val_mae.append(round(sm.mean_absolute_error(y_val, val_pred),2))
+        
+        train_MedAE.append(round(sm.median_absolute_error(y_train, y_pred),2))
+        val_MedAE.append(round(sm.median_absolute_error(y_val, val_pred),2))
+        
         #build df
         data={ 
-               
                'Method': model_name,
                'Train R2': train_r2, 
-               'Validation R2': val_r2,
-               'Train MSE': train_mse,
-               'Validation MSE': val_mse,
-               'Train MAE': train_mae,
-               'Validation MAE': val_mae}
+               'Test R2': val_r2,
+               'Train Mean Squared Error': train_mse,
+               'Test Mean Squared Error': val_mse,
+               'Train Mean Absolute Error': train_mae,
+               'Test Mean Absolute Error': val_mae,
+               'Train Median Absolute Error': train_MedAE,
+               'Test Median Absolute Error': val_MedAE}
     
         # stylize
         cm = sns.light_palette("violet", as_cmap=True)
-        results = pd.DataFrame(data).sort_values('Validation R2',
+        results = pd.DataFrame(data).sort_values('Test R2',
                             ascending=False).style.background_gradient(cmap=cm)
     return results
 
@@ -289,7 +303,7 @@ def grid_optimizer(opt_model):
         )
         * 100
     )
-    plt.title("R2 - Validation")
+    plt.title("R2 - Test")
     
     
     
