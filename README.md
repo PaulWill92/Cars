@@ -39,7 +39,20 @@ Knowing the above parameters, I know that In order to solve my problem, I am abl
 
 To get started, I created a web crawling script found in my [Data Gathering](https://github.com/PaulWill92/predict-car-prices/blob/master/Jupyter-Notebooks/01-Data_Gathering.ipynb) notebook, to extract features of certain up to date cars from [Auto Village](https://www.autovillage.co.uk/used-car/filter/bodystyle/saloon). I was able to store these values in a list, form a data frame out of the list values, and save that data frame as a [csv file](https://github.com/PaulWill92/predict-car-prices/blob/master/Cleaned-Data/cleaned_cars.csv).
 
+Each car cell that was scraped looked like this:
+
+![Web car](./figures/website_car.png)
+
+The raw scraped dataframe looked like this:
+
+![Data Raw](./figures/scraped_df.png)
+
+
 After extracting my data, I began cleaning the data set to provide the correct format for modeling in this [Data Cleaning](https://github.com/PaulWill92/predict-car-prices/blob/master/Jupyter-Notebooks/02-data_cleaning.ipynb) notebook. I utilized many string manipulation techniques to split my features into seperate columns. By the end of the cleaning, I was left with 1 target variable and 8 predictors.
+
+After the feature engineering and transformations, dataframe looked like this:
+
+![cleaned](./figures/cleaned_df.png)
 
 After data cleaning, I explored my data set looking for outliers and checking the linear correlations between my target variable and predictors. I was able to feature engineer new features. The process is shown in my [Data Exploration](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/03-Data_Exploration.ipynb) notebook.
 
@@ -48,7 +61,6 @@ After data cleaning, I explored my data set looking for outliers and checking th
 
 ### Correlation of all features
 ![Heatmap](./figures/heatmap.png)
-
 
 
 After exploration, I proceeded to model you can find my modeling in my [Data Modeling](https://github.com/PaulWill92/predict-car-prices/blob/master/Jupyter-Notebooks/04-Data_Modeling.ipynb) notebook. Since my data set contained multiple categorical values, I had to encode them to be able to use within my baseline model. Once encoded, I split up my data set into 4 sets; train, validation, and test. From these sets, I ran my baseline which scored negatively with all of my features included. 
