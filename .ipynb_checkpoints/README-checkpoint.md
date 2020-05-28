@@ -76,9 +76,11 @@ I tried out other models such as Decision tree, K-nearest neighbours, and Random
 ![Model Scores](./figures/model_scores.png)
 
 Based off the above results, I decided to pursue 2 model learners: KNN, and random forrest.
-Through the use of GridSearchCV hyper parameter optimization, I was able to decrease some of my random forrest models error. As of now, my best model is my Random Forrest regressor with a .88 R-squared. Here is a visual of 30 of it's predicted outputs.
+Through the use of GridSearchCV hyper parameter optimization, I was able to decrease some of my random forrest models error. As of now, my highest scoring model is my Random Forrest regressor with a .88 R-squared. Here is a visual of 30 of it's predicted outputs.
 
 ![Forrest Predictions](./figures/forrest_predicted_output.png)
+
+Even though this model scored high, certain cars tended to make it either predict way too high or way too low. That is because it made decisions based on the features to reach its price conclusion.
 
 My optimized KNN regressor scored .7 R2 after gridsearch hyper parameter optimization which was better than the original:
 
@@ -92,12 +94,12 @@ Here is a visualization of the KNN regressors predictions on 10 random cars that
 ![KNN test predictions](./figures/winner_predictions.png)
 
 
-The final model I selected was the KNN Regressor model. 
+The final model I selected was the KNN Regressor model. This model doesn't make decisions based on features like the random forrest. Instead, it decides based off groups(neighbors) which are defined by the means of the combination of features price.
 
-Based on predictions on average cars as a whole being good, I decided to choose the KNN Regressor as my final model. This model seems to adapt best based on the features it was trained on. When I ran multiple randomized predictions, I noticed that it did not get thrown off by certain sports car luxury model outliers as much as the other models. My data set is mostly comprised of mercedes benz cars that vary heavily in price based on model. Since model was not a feauture used in training, my other regressors struggled with this and often over priced certain cars with similar physical features to luxury model cars. For example, an A class mercedes can cost within the 10-15k range, whereas a C class can be 20k+. This variance makes my other models predict way too high on non luxury model cars and way to low on certain luxury model cars. K neighbors looks at the mean of the nearest cars and says it must belong to a certain group based on it's features as a whole causing it to fall closer within range of these highly varied cars.
+KNN Regressors predictions on average cars as a whole was very good. When I ran multiple randomized predictions, I noticed that it did not get thrown off by certain sports car luxury model outliers as much as the other models. My data set is mostly comprised of mercedes benz cars that vary heavily in price based on model. Since model was not a feauture used in training, my other regressors struggled with this and often over priced certain cars with similar physical features to luxury model cars. For example, an A class mercedes can cost within the 10-15k range, whereas a C class can be 20k+. This variance makes my other models predict way too high on non luxury model cars and way to low on certain luxury model cars. K neighbors looks at the mean of the nearest cars and says it must belong to a certain group based on it's features as a whole causing it to fall closer within range of these highly varied cars.
 
 
-To Improve my model, I would extract more features from other auto sale websites and add it to my model. Since my data set was webscraped, the cars acquired were completely random. It turns out the majority of my cars were mercedes-benz. I would also increase my sample size of cars providing a wide range of brands this would likely help with some of the instability, since mercedes-benz has such a wide range of cars that vary a lot in price based on their model. 
+To Improve my model, I would extract more features from other auto sale websites and add it to my model. Since my data set was webscraped, the cars acquired were completely random. I would also increase my sample size of cars providing a wide range of brands and models. This would likely help with some of the instability.
 
 ## Sources:
 
