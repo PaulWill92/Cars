@@ -1,0 +1,10 @@
+,price(£),mileage(mi),door_count,body_style,engine_size(cc),transmission,year,brand,model
+0,16240,53180,4,Saloon,2993,Automatic,2015.0,BMW,5
+1,12379,53505,4,Saloon,1968,Automatic,2017.0,Volkswagen,Passat
+2,16990,47000,4,Saloon,2987,Automatic,2016.0,Mercedes-Benz,E
+3,8295,87480,4,Saloon,2191,Manual,2017.0,Mazda,6
+4,9995,81000,4,Saloon,2993,Automatic,2011.0,Jaguar,XJ
+5,15280,28155,4,Saloon,2100,Automatic,2016.0,Mercedes-Benz,C
+6,25895,4000,4,Saloon,1969,Automatic,2019.0,Volvo,S60
+8,45000,283,4,Saloon,2967,Automatic,2020.0,Audi,A8
+9,24991,8297,4,Saloon,1969,Automatic,2019.0,Volvo,S90

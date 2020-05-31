@@ -1,23 +1,20 @@
+
+#===========================================================================================#
+# Imports                                                                                   #
+#===========================================================================================#
+
 import pandas as pd
 import numpy as np
-import sys
+
 # Webscraping libraries
 from urllib.request import urlopen # url inspector
 from bs4 import BeautifulSoup
 import re
-from selenium import webdriver # connects to chrome browser
-import warnings
-warnings.filterwarnings('ignore')
-
-# Web crawler imports
-import requests
-from requests import get
-
-# Web crawlers random seeds/time delays
-from time import sleep
-from random import randint
 
 
+#===========================================================================================#
+# Functions                                                                                 #
+#===========================================================================================#
 
 def web_crawler():
     
@@ -58,7 +55,15 @@ def web_crawler():
     all_styles = ["saloon", "hatchback", "4x4", "estate", "coupe", "convertible", "mpv"]
     
     # take user input of body style. If left blank all body inputs will be taken
-    print("Body styles = saloon, hatchback, 4x4, estate, coupe, convertible, or mpv.")
+    print("Auto Village Webscraper!")
+    print("------------------------------------------------------------------------------------------------------")
+    print("Body style choices (seperate with commas): saloon, hatchback, 4x4, estate, coupe, convertible, or mpv.")
+    print("Pages: a single integer (note there are 10 cars per page)")
+    print("Save File: name you want to call your csv file")
+    print("------------------------------------------------------------------------------------------------------")
+    print("\n")
+    print("Inputs:")
+    print("------------------------------------------------------------------------------------------------------")
     input_body = input("Enter a body style (or leave blank for all): ")
     input_body = input_body.replace(",", "")
     
@@ -70,8 +75,8 @@ def web_crawler():
     
     # amount of pages input
     input_pages = input("Enter the amount of pages you want to scrape: ")
-    pages = range(0, int(input_pages))
-    
+    pages = range(0, int(input_pages)+1)
+
     
     for i in pages:
         for p in bodystyle:
@@ -178,6 +183,10 @@ def web_crawler():
     # Drop duplicates
     df.drop_duplicates(keep='first', inplace=True)
     
+    # Count how many cars got scraped
+    print("------------------------------------------------------------------------------------------------------")
+    print("You scraped: ", len(df), "cars")
+    
     # Create the save with user defined name. If left blank the save wont happen
     input_save = input("Name to save file as (leave blank to not save): ")
     save_file_name = str(input_save)
@@ -185,4 +194,15 @@ def web_crawler():
     file_path = save_file_name+".csv"
     result = df.to_csv(file_path)
     
+    print("------------------------------------------------------------------------------------------------------")
+    if save_file_name == "":
+        print("File Not Saved!")
+    else:
+        print("File saved as {}".format(save_file_name+".csv"), "in the current directory!")
+    
     return df
+
+#===========================================================================================#
+
+if __name__ == '__main__':
+    web_crawler()
