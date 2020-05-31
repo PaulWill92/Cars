@@ -1,0 +1,10 @@
+,price(£),mileage(mi),door_count,body_style,engine_size(cc),transmission,year,brand,model
+0,19998,28826,2.0,Coupe,1995.0,Automatic,2018.0,BMW,4
+1,25000,20613,5.0,Coupe,2993.0,Automatic,2015.0,BMW,X4
+2,149850,1500,2.0,Coupe,3996.0,Automatic,2019.0,Bentley,Continental
+3,46950,350,2.0,Coupe,2996.0,Automatic,2019.0,Mercedes-Benz,C
+4,76940,4763,2.0,Coupe,5200.0,Automatic,2017.0,Audi,R8
+5,13890,82000,4.0,Coupe,1995.0,Automatic,2016.0,BMW,4
+6,12090,31647,2.0,Coupe,1499.0,Automatic,2016.0,BMW,2
+7,12395,88200,2.0,Coupe,1968.0,Manual,2015.0,Audi,A5
+9,6490,73000,4.0,Coupe,1591.0,Manual,2012.0,Hyundai,Veloster
