@@ -17,30 +17,52 @@ import re
 #===========================================================================================#
 
 def web_crawler():
+  
+    print("""
+    Auto Village Webscraper!
     
-    """
+    A car web scraping program created by Paul Aleksis Williams.
     
-    Function use:
+    Program description:
     
-    This functions asks for an input of the body style of cars you want to scrape.
-    It then asks for a number of pages to scrape (10 cars per page). Finally, it
-    it asks for a name to save the file as a csv in the current directory.
     
-    Function output:
+    This programs scrapes cars listed on the autovillage.co.uk website, cleans the
+    entries, drops duplicated entries, drops entries with missing values, and
+    returns a data frame that contains 1 target variable and 8 features.
     
-    The function returns a cleaned data frame of cars scraped from autovillage.com
+    Program inputs:
+    
+    
+    1. Input the body style of cars you want to scrape ot leave empty for all.
+       options: saloon, hatchback, 4x4, estate, coupe, convertible, mpv. For
+       multiple styles seperate input with a comma.
+    
+    2. Input the number of pages to scrape there are 10 cars per page. If left
+       blank, it will scrape 1 page per body style.
+    
+    3. Input a name for the file to save it as a csv in the current directory.
+       If left blank, It will not save but you can set it as a variable to view
+       the table.
+       
+       
+    Program output:
+    
+    
+    The function returns a cleaned data frame of cars scraped from autovillage.co.uk
     dropping all the missing values within the websites interface, and removing any
     duplicated cars.
     
-    Save or make a variable:
+    
+    Program save feature:
+    
     
     You can leave the save input empty and the file will not be saved.
     
-    You can set set a variable for this function in jupyter notebooks and manipulate
+    You can set a variable for this function in jupyter notebooks and manipulate
     the created pandas object as normal.
     
     
-    """
+    """)
     
     
     
@@ -55,17 +77,11 @@ def web_crawler():
     all_styles = ["saloon", "hatchback", "4x4", "estate", "coupe", "convertible", "mpv"]
     
     # take user input of body style. If left blank all body inputs will be taken
-    print("Auto Village Webscraper!")
-    print("------------------------------------------------------------------------------------------------------")
-    print("Body style choices (seperate with commas): saloon, hatchback, 4x4, estate, coupe, convertible, or mpv.")
-    print("Pages: a single integer (note there are 10 cars per page)")
-    print("Save File: name you want to call your csv file")
-    print("------------------------------------------------------------------------------------------------------")
     print("\n")
     print("Inputs:")
     print("------------------------------------------------------------------------------------------------------")
     input_body = input("Enter a body style (or leave blank for all): ")
-    input_body = input_body.replace(",", "")
+    input_body = input_body.lower().replace(",", "")
     
     if input_body=="":
         bodystyle = all_styles
@@ -74,8 +90,12 @@ def web_crawler():
     
     
     # amount of pages input
-    input_pages = input("Enter the amount of pages you want to scrape: ")
-    pages = range(0, int(input_pages)+1)
+    input_pages = input("Enter the amount of pages you want to scrape (or leave blank for 1): ")
+    
+    if input_pages =="":
+        pages= [1]
+    else:
+        pages = range(0, int(input_pages)+1)
 
     
     for i in pages:
@@ -184,8 +204,10 @@ def web_crawler():
     df.drop_duplicates(keep='first', inplace=True)
     
     # Count how many cars got scraped
+    print("\n")
+    print("Output:")
     print("------------------------------------------------------------------------------------------------------")
-    print("You scraped: ", len(df), "cars")
+    print("Done! you scraped: ", len(df), "cars!")
     
     # Create the save with user defined name. If left blank the save wont happen
     input_save = input("Name to save file as (leave blank to not save): ")
