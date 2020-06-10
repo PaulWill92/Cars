@@ -1,8 +1,11 @@
-import pandas as pd
 import sys
-import streamlit as st
+
 import numpy as np
+import pandas as pd
 import seaborn as sns
+import streamlit as st
+
+
 
 
 df = pd.read_csv("~/Desktop/capstone3/cars/Cleaned-Data/cleaned_cars.csv")
@@ -30,3 +33,4 @@ if st.checkbox("Show data"):
 "You selected: ", option1
 filt = df["brand"] == option1
 df[filt]
+
