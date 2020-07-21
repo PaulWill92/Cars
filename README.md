@@ -11,7 +11,7 @@ Use this [app](In progress) to predict price
 ## Contents
 
 1. [Presentation Slides](https://drive.google.com/file/d/1mDAKD81HligeDWsKDlGVd0qk2NiRACtr/view?usp=sharing)
-2. [Data Gathering](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/01-Data_Gathering.ipynb)
+2. [Data Gathering](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/01-Automated_Data_Gathering.ipynb)
 3. [Data Cleaning](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/web-scrapers/02-Manual_Data_Cleaning.ipynb)
 4. [Data Exploration](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/02-Data_Exploration.ipynb)
 5. [Data Modeling](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/03-Data_Modeling.ipynb)
