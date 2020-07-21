@@ -82,16 +82,17 @@ def autovillage_crawler(): # web_crawler version 1.1 accepts lists for car brand
         print("\n")
         print("Inputs:")
         print("------------------------------------------------------------------------------------------------------")
-
-        input_brand = input("Enter a car brand you are interested in (leave blank for all): ")
+        
+        print("Enter a car brand you are interested in (leave blank for all):")
+        input_brand = input("> ")
         car_brand = input_brand.lower().replace(",", "")
         if car_brand == "":
             brands = " "
         else:
             brands = list(car_brand.split())
         
-
-        input_body = input("Enter a body style (or leave blank for all): ")
+        print("Enter a body style (or leave blank for all): ")
+        input_body = input("> ")
         body = input_body.lower().replace(",", "")
 
         if  body=="":
@@ -101,7 +102,8 @@ def autovillage_crawler(): # web_crawler version 1.1 accepts lists for car brand
 
 
         # amount of pages input
-        input_pages = input("Enter the amount of pages you want to scrape (or leave blank for 1): ")
+        print("Enter the amount of pages you want to scrape (leave blank for 1)")
+        input_pages = input("> ")
 
         if input_pages =="":
             pages= [1]
@@ -257,7 +259,8 @@ def autovillage_crawler(): # web_crawler version 1.1 accepts lists for car brand
         print("{} cars were dropped due to poor format".format(predicted_count - actual_count))
 
         # Create the save with user defined name. If left blank the save wont happen
-        input_save = input("Name to save file as (leave blank to not save): ")
+        print("Name to save file as (leave blank to not save): ")
+        input_save = input("> ")
         save_file_name = str(input_save)
 
         print("------------------------------------------------------------------------------------------------------")

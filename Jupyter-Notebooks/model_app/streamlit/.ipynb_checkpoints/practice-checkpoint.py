@@ -17,17 +17,17 @@ st.image("./streamlit_app_picture.jpg")
 st.write(
     "Cars Data Frame scrapped from [Autovillage](https://www.autovillage.co.uk/used-car)"
 )
-# st.dataframe(df)
+st.dataframe(df)
 
-median_brand_price = df.groupby(["brand", "model"]).agg(
-    Price=("price(£)", "median"),
-    Quantity=("brand", "count"),
-    Model_Avg_Miles=("mileage(mi)", "median"),
-)
+# median_brand_price = df.groupby(["brand", "model"]).agg(
+#     Price=("price(£)", "median"),
+#     Quantity=("brand", "count"),
+#     Model_Avg_Miles=("mileage(mi)", "median"),
+# )
 
 
 
-st.dataframe(median_brand_price)
+# st.dataframe(median_brand_price)
 
 # Load my regressor model
 model = pickle.load(open('../../../pickle_files/pkl_objects/KnnRegressor.pkl', 'rb'))

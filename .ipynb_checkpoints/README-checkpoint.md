@@ -12,15 +12,15 @@ Use this [app](In progress) to predict price
 
 1. [Presentation Slides](https://drive.google.com/file/d/1mDAKD81HligeDWsKDlGVd0qk2NiRACtr/view?usp=sharing)
 2. [Data Gathering](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/01-Data_Gathering.ipynb)
-3. [Data Cleaning](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/02-Data_Cleaning.ipynb)
-4. [Data Exploration](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/03-Data_Exploration.ipynb)
-5. [Data Modeling](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/04-Data_Modeling.ipynb)
+3. [Data Cleaning](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/web-scrapers/02-Manual_Data_Cleaning.ipynb)
+4. [Data Exploration](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/02-Data_Exploration.ipynb)
+5. [Data Modeling](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/03-Data_Modeling.ipynb)
 
 My Socials:
 
 - Email: paulaleksis@gmail.com
-- Linkedin: [Paul-Aleksis](WWW.LINKEDIN.COM/IN/PAUL-ALEKSIS-406776199)
-- Twitter: [My Twitter](in progress)
+- Linkedin: [Paul-Aleksis](https://www.linkedin.com/in/paul-aleksis-406776199/)
+- Medium: [My Medium](https://medium.com/swlh/predicting-car-prices-using-machine-learning-60a98a56f971)
 
 ### Executive Summary
 
@@ -48,13 +48,13 @@ The raw scraped dataframe looked like this:
 ![Data Raw](./figures/scraped_df.png)
 
 
-After extracting my data, I began cleaning the data set to provide the correct format for modeling in this [Data Cleaning](https://github.com/PaulWill92/predict-car-prices/blob/master/Jupyter-Notebooks/02-data_cleaning.ipynb) notebook. I utilized many string manipulation techniques to split my features into seperate columns. By the end of the cleaning, I was left with 1 target variable and 8 predictors.
+After extracting my data, I began cleaning the data set to provide the correct format for modeling in this [Data Cleaning](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/web-scrapers/02-Manual_Data_Cleaning.ipynb) notebook. I utilized many string manipulation techniques to split my features into seperate columns. By the end of the cleaning, I was left with 1 target variable and 8 predictors.
 
 After the feature engineering and transformations, dataframe looked like this:
 
 ![cleaned](./figures/cleaned_df.png)
 
-After data cleaning, I explored my data set looking for outliers and checking the linear correlations between my target variable and predictors. I was able to feature engineer new features. The process is shown in my [Data Exploration](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/03-Data_Exploration.ipynb) notebook.
+After data cleaning, I explored my data set looking for outliers and checking the linear correlations between my target variable and predictors. I was able to feature engineer new features. The process is shown in my [Data Exploration](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/02-Data_Exploration.ipynb) notebook.
 
 ### Corelation of new created features
 ![Heatmap](./figures/heatmap_new_feat.png)
@@ -63,7 +63,7 @@ After data cleaning, I explored my data set looking for outliers and checking th
 ![Heatmap](./figures/heatmap.png)
 
 
-After exploration, I proceeded to model you can find my modeling in my [Data Modeling](https://github.com/PaulWill92/predict-car-prices/blob/master/Jupyter-Notebooks/04-Data_Modeling.ipynb) notebook. Since my data set contained multiple categorical values, I had to encode them to be able to use within my baseline model. Once encoded, I split up my data set into 4 sets; train, validation, and test. From these sets, I ran my baseline which scored negatively with all of my features included. 
+After exploration, I proceeded to model you can find my modeling in my [Data Modeling](https://github.com/PaulWill92/cars/blob/master/Jupyter-Notebooks/03-Data_Modeling.ipynb) notebook. Since my data set contained multiple categorical values, I had to encode them to be able to use within my baseline model. Once encoded, I split up my data set into 4 sets; train, validation, and test. From these sets, I ran my baseline which scored negatively with all of my features included. 
 
 ![Baseline1](./figures/baseline1_score.png)
 
